@@ -1,5 +1,5 @@
+use chrono::DateTime;
 use spacetimedb::{ReducerContext, Table};
-use chrono:DateTime;
 
 #[spacetimedb::table(accessor = event, public)]
 pub struct Event {
@@ -7,7 +7,7 @@ pub struct Event {
     #[auto_inc]
     id: u64,
     name: String,
-    date: DateTime;
+    // date_time: DateTime,
 }
 
 #[spacetimedb::reducer(init)]
@@ -25,8 +25,15 @@ pub fn identity_disconnected(_ctx: &ReducerContext) {
     // Called everytime a client disconnects
 }
 
-#[spacetimedb::reducer]
-pub fn add(ctx: &ReducerContext, name: String) {
-    ctx.db.person().insert(Person { name });
-}
+// #[spacetimedb::reducer]
+// pub fn add(ctx: &ReducerContext, name: String) {
+// ctx.db.person().insert(Person { name });
+// }
 
+// #[spacetimedb::reducer]
+// pub fn say_hello(ctx: &ReducerContext) {
+// for person in ctx.db.person().iter() {
+// log::info!("Hello, {}!", person.name);
+// }
+// log::info!("Hello, World!");
+// }
